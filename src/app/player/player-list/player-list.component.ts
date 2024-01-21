@@ -13,11 +13,13 @@ import { Player } from 'src/app/models/player';
   providedIn: 'root',
 })
 export class PlayerListComponent implements OnInit {
+  player: Partial<Player> = {};
+
   ngOnInit(): void {
     throw new Error('Method not implemented.');
   }
 
-  listen(eventName: string): Observable<Player> {
-    return new Observable<Player>();
+  listen(eventName: any): Observable<Player> {
+    return (this.player = eventName);
   }
 }
