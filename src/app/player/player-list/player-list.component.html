@@ -1,3 +1,60 @@
-<li *ngFor="let player of players">
-  {{ player?.First }}
-</li>
+<!-- Include Bootstrap CSS -->
+<link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+/>
+
+<!-- Table -->
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Position</th>
+      <th scope="col">Player</th>
+      <!-- Assuming 18 holes plus the score -->
+      <th scope="col">1</th>
+      <th scope="col">2</th>
+      <th scope="col">3</th>
+      <th scope="col">4</th>
+      <th scope="col">5</th>
+      <th scope="col">6</th>
+      <th scope="col">7</th>
+      <th scope="col">8</th>
+      <th scope="col">9</th>
+      <th scope="col">10</th>
+      <th scope="col">11</th>
+      <th scope="col">12</th>
+      <th scope="col">13</th>
+      <th scope="col">14</th>
+      <th scope="col">15</th>
+      <th scope="col">16</th>
+      <th scope="col">17</th>
+      <th scope="col">18</th>
+      <th scope="col">Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let player of players">
+      <th scope="row">{{ player?.position }}</th>
+      <td>{{ player?.First }} {{ player?.Last }}</td>
+      <td>{{ player?.Hole1Strokes }} ({{ player?.Hole1STP }})</td>
+      <td>{{ player?.Hole2Strokes }} ({{ player?.Hole2STP }})</td>
+      <td>{{ player?.Hole3Strokes }} ({{ player?.Hole3STP }})</td>
+      <td>{{ player?.Hole4Strokes }} ({{ player?.Hole4STP }})</td>
+      <td>{{ player?.Hole5Strokes }} ({{ player?.Hole5STP }})</td>
+      <td>{{ player?.Hole6Strokes }} ({{ player?.Hole6STP }})</td>
+      <td>{{ player?.Hole7Strokes }} ({{ player?.Hole7STP }})</td>
+      <td>{{ player?.Hole8Strokes }} ({{ player?.Hole8STP }})</td>
+      <td>{{ player?.Hole9Strokes }} ({{ player?.Hole9STP }})</td>
+      <td>{{ player?.Hole10Strokes }} ({{ player?.Hole10STP }})</td>
+      <td>{{ player?.Hole11Strokes }} ({{ player?.Hole11STP }})</td>
+      <td>{{ player?.Hole12Strokes }} ({{ player?.Hole12STP }})</td>
+      <td>{{ player?.Hole13Strokes }} ({{ player?.Hole13STP }})</td>
+      <td>{{ player?.Hole14Strokes }} ({{ player?.Hole14STP }})</td>
+      <td>{{ player?.Hole15Strokes }} ({{ player?.Hole15STP }})</td>
+      <td>{{ player?.Hole16Strokes }} ({{ player?.Hole16STP }})</td>
+      <td>{{ player?.Hole17Strokes }} ({{ player?.Hole17STP }})</td>
+      <td>{{ player?.Hole18Strokes }} ({{ player?.Hole18STP }})</td>
+      <td>{{ player?.Score }}</td>
+    </tr>
+  </tbody>
+</table>
