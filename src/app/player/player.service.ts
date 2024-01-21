@@ -2,23 +2,22 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { io } from 'socket.io-client';
 import { Player } from '../models/player';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PlayerService {
   private socket: any;
-  private url = 'https://mst-full-stack-dev-test.herokuapp.com';
-  private players: Player[] = []; // Array to store player objects
+  private players: Player[] = [];
 
   constructor() {
-    this.socket = io(this.url);
+    this.socket = io(environment.apiUrl);
   }
 
-  public getData(): Observable<any> {
+  public getData(): Observable<Player[]> {
     return new Observable((observer) => {
-      this.socket.on('data-update', (data: any) => {
-        console.log('Data received:', data);
+      this.socket.on('data-update', (data: Player) => {
         this.updatePlayerArray(data); // Update player array
         observer.next(this.players); // Emit the updated array
       });

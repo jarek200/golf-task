@@ -11,8 +11,7 @@ import { PlayerService } from '../player.service';
 export class PlayerListComponent implements OnInit, OnDestroy {
   players: Partial<Player[]> = [];
   private dataSubscription: Subscription | undefined;
-  filteredPlayers: Partial<Player[]> = [];
-  searchText: string = '';
+
   constructor(private playerService: PlayerService) {}
 
   ngOnInit(): void {
@@ -20,7 +19,6 @@ export class PlayerListComponent implements OnInit, OnDestroy {
       .getData()
       .subscribe((data: Partial<Player[]>) => {
         this.players = this.sortPlayersByScore(data);
-        console.log('Sorted players:', this.players); // To verify sorted data
       });
   }
 
@@ -38,18 +36,5 @@ export class PlayerListComponent implements OnInit, OnDestroy {
         typeof b.Score === 'number' ? b.Score : parseFloat(b.Score);
       return scoreA - scoreB;
     });
-  }
-  filterPlayers(): void {
-    if (!this.searchText) {
-      this.filteredPlayers = [...this.players];
-    } else {
-      this.filteredPlayers = this.players.filter(
-        (player) =>
-          player?.First?.toLowerCase().includes(
-            this.searchText.toLowerCase()
-          ) ||
-          player?.Last?.toLowerCase().includes(this.searchText.toLowerCase())
-      );
-    }
   }
 }
