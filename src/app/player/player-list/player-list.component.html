@@ -1,2 +1,3 @@
-<p>player-list works!</p>
-<p>Player name:{{ player.First }}</p>
+<li *ngFor="let player of players">
+  {{ player?.First }}
+</li>

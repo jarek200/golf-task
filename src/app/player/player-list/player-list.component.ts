@@ -9,7 +9,7 @@ import { PlayerService } from '../player.service';
   styleUrls: ['./player-list.component.css'],
 })
 export class PlayerListComponent implements OnInit, OnDestroy {
-  player: Partial<Player> = {};
+  players: Partial<Player[]> = [];
   private dataSubscription: Subscription | undefined;
 
   constructor(private playerService: PlayerService) {}
@@ -19,7 +19,8 @@ export class PlayerListComponent implements OnInit, OnDestroy {
       .getData()
       .subscribe((data: any) => {
         console.log('Data received in component:', data); // Add this line
-        this.player = data;
+        this.players = data;
+        console.log(this.players, 'players');
       });
   }
 
